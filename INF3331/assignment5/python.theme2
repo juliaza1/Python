@@ -1,0 +1,10 @@
+variable: 38;5;125
+import: 38;5;126
+function: 38;5;127
+nonetruefalse: 38;5;128
+ifelse: 38;5;129
+class: 38;5;132
+tryexcept: 38;5;133
+forloop: 38;5;174
+whileloop: 38;5;176
+print: 38;5;177

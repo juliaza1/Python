@@ -1,0 +1,80 @@
+\documentclass[a4paper]{article}
+
+% Import some useful packages
+\usepackage[margin=0.5in]{geometry} % narrow margins
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.95}
+
+\title{Peer-review of assignment 5 for \textit{INF3331-juliaza}}
+\author{Reviewer 1, namraha, {namraha@uio.no} \\
+ 		Reviewer 2, erikpo, {erikpo@uio.no} \\
+		Reviewer 3, eivinfu, {eivinfu@uio.no}}
+
+\begin{document}
+\maketitle
+
+\section{Review}
+Reviewed with Python 3.5.2 on a laptop running Ubuntu 16.04.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{General feedback}
+
+Overall, your code does what it is supposed to do, and your style is nice and pythonic, especially the way you create dictionaries in your highlighter, but it would be even more pythonic to split your scripts into functions. It is also nice to see the amount of comments in your code. It would, however, be even nicer to see some docstrings that summarize what the script does. If you do decide to include docstrings in functions later, they should describe every parameter, return value, and the general purpose of the functions.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.1: Syntax highlighting}
+
+Your highlighter works properly. Good work! The code is readable, and the comments are very helpful!
+The else-clause in your first if-statement does not actually exit the script, it is merely a print statement. To fix this, you can replace:\\
+\begin{minted}[bgcolor=LightGray, linenos, fontsize=\footnotesize]{python}
+print("Wrong number of inputs. Exiting.")
+\end{minted}
+
+with:
+
+\begin{minted}[bgcolor=LightGray, linenos, fontsize=\footnotesize]{python}
+sys.exit("Wrong number of inputs. Exiting.")
+\end{minted}
+\\Alternatively, you may look into using Argparse to handle arguments.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.2: Python syntax} \label{sec:assignment5.2}
+Overall good regular expressions that capture a good subset of Python!\\
+It seems like your regular expression for if-statements somehow requires an elif for the else-clause to be colored in your "ifelse" color, and is colored as "tryExcept" otherwise. Not sure how to fix this, but try to fix it if you want.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.3: Syntax for your favorite language}
+
+Same as above, good work. These are very interesting regular expressions that handle multiline comments, strings of any length, and the list goes on. Really interesting to see how you manage to capture the different variations of "code sections", and not just keywords.
+
+PS: You might want to change "none" to "null" as this is what it is called in Java.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.4: Syntax for your second favorite language}
+
+While it was not required, it would have been nice if you had provided a sample Swift program. It would have made it easier to get started checking the highlighting, and it would also have been an opportunity for you to demonstrate just the right elements of your regex.
+\\Again you have done thorough work with your regular expressions. Same thing can be said about these regexes as the previous regexes really, so there is not much to add.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.5: superdiff}
+Your diff script is simple, elegant, easy to read and generates the correct output. Nice use of regex!
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Assignment 5.6:  Coloring diff}
+
+Coloring works as expected and it is also nice to see that the regexes required that the match must occur at the beginning of a line to be considered an addition or removal of text.
+
+
+\bibliographystyle{plain}
+\bibliography{literature}
+
+\end{document}

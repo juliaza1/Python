@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    </head>
+    <body>
+        <h1>CO2</h1>
+        <h2>Enter values</h2>
+        <form method=post action="">
+            <table>
+                {% for field in form %}
+                    <tr>
+                        <td class="name">
+                            {{ field.name }}
+                        </td>
+                        <td>
+                            {{ field(size=12) }}
+                        </td>
+                        <td>
+                            {{ field.label }}
+                        </td>
+                        {% if field.errors %}
+                            <td>
+                                <ul class=errors>
+                                    {% for error in field.errors %}
+                                         <li><font color="red">{{ error }}</font></li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <p>
+                <input type=submit value=Compute>
+            </p>
+        </form>
+        <p></p>
+        <a href="/">Back</a>
+        <p></p>
+        {% if result_2 != None %}
+            {% if result_2 == -1 %}
+                <h5>Error</h5>
+            {% else %}
+                <img class="plotCO2" src="/{{result_2}}" width="1800">
+            {% endif %}
+        {% endif %}
+    </body>
+</html>

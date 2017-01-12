@@ -1,0 +1,10 @@
+"\/\/.*|\/\*[\s\S]*?.*\*\/": comments
+"\bif\b[\s\S]+?{|\belse if\b[\s\S]+?{|\belse\b[\s\S]+?{": if_else
+"\binterface\b(\s(?<!\n))+\w+?\s*{": interface
+".*?\bnew\b\s+\w+(\<.*\>)?\(.*\);": new
+"\bSystem.out.print(ln)?\b\s*?\(.*\);": print
+"(.*)?\bclass\b(\s(?<!\n))+\w+?(\<.*\>)?\s*?(\bextends\b\s*?\w+)?\s*(\bimplements\b\s+\w+)?\s*{": class
+"(\"{3}[\s\S]*?\"{3}|\"[\s\S]*?\")|(\'{3}[\s\S]*?\'{3}|\'[\s\S]*?\')": string
+"(\bswitch\b\s+\(.*\)\s+\{|\bcase\b\s+?\d+\:\s*.*;\s*(\bbreak\b;)?|\bdefault\b\:\s+?(.*;\s*)?\bbreak\b;)": switch
+"\btry\b\s*\{[\S\s]+?\}|\bcatch\b\s*\(.*\)\s*\{[\S\s]+?\}|\bfinally\b\s*\{[\S\s]+?\}": try_catch
+"\bnone\b|\btrue\b|\bfalse\b": none_true_false

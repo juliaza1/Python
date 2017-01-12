@@ -1,0 +1,3 @@
+Den første testen feiler fordi num_rechecks er 0 og da får den en tom liste. Dette fører til en feil når den prøver å kjøre "in range(num_rechecks)"
+
+Better_addition burde teste om num_rechecks er <=0 og returnere en feilmelding

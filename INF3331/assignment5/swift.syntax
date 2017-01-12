@@ -1,0 +1,11 @@
+"(\"{3}[\s\S]*?\"{3}|\"[^\n]*?\")|(\'{3}[\s\S]*?\'{3}|\'[^\n]*?\')": string
+"\blet\b[^\S\n]*?\w+?[^\S\n]*?\=|\bvar\b[^\S\n]*?\w+?[^\S\n]*?\=": let_var
+"(?<!\w)\-?\b\d+\b.\b\d+\b|(?<!\w)\-?\d+\s": int_double
+"\/{2}[\s\S]*?\n|\/\*[\s\S]*?.*\*\/": comments
+"\w+[^\S\n]*?\|{2}[^\S\n]*?\w+|\w+[^\S\n]*?\&{2}[^\S\n]*?\w+|\!\w+": logical_operators
+"\w+?[^\S\n]+(==|>|<|>=|<=|!=)[^\S\n]+\w+?": comparison_operators
+"\w+(\.[0-9]*)?(\+|\-|\*|\/)\w+(\.[0-9]*)?|\w+(\.[0-9]*)?[^\S\n]+?(\+|\-|\*|\/)[^\S\n]+?\w+(\.[0-9]*)?": arithmetic_operators
+"\bfunc\b\s+?\w+\s*?\(.*\)(\s*?\-\>\s*?\w+)?\s*?{": function_def
+"\bclass\b\s+\w+\s*?{|\bstruct\b\s+\w+\s*?{": class_struct
+"\bswitch\b.*\{[\s\S]*?(\s*.*\s*)\bdefault\b\s*\:(\s*.*\s*)\}": switch
+"\bif\b[\s\S]+?{|\belse if\b[\s\S]+?{|\belse\b[\s\S]+?{": if_else

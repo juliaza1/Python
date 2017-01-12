@@ -1,0 +1,11 @@
+string: 38;5;23
+let_var: 38;5;25
+int_double: 38;5;27
+comments: 38;5;29
+logical_operators: 38;5;31 
+comparison_operators: 38;5;33
+arithmetic_operators: 38;5;35
+function_def: 38;5;37
+class_struct: 38;5;39
+switch: 38;5;41
+if_else: 38;5;43

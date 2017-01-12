@@ -1,0 +1,309 @@
+ # -*- coding: utf-8 -*-
+#
+# oblig3b.fredrls.py
+# version 1.0
+# 
+# Fredrik Stave <fredrls@student.matnat.uio.no>
+# Created 02-05-2011 11:13
+#
+
+import os, nltk
+def header():
+	os.system("clear")
+	print "|====================================================|"
+	print "| Mandatory assignment 3b                            |"
+	print "| INF1820 - Language and communication technologies  |"
+	print "|----------------------------------------------------|"
+	print "| Fredrik Larsen Stave                               |"
+	print "| fredrls@student.matnat.uio.no                      |"
+	print "| created: 02.05.2011 11:13                          |"
+	print "|====================================================|"
+
+def menu():
+	print "\n1a    - Exercise 1a"
+	print "1b    - Exercise 1b"
+	print "2.1   - Exercise 2.1"
+	print "2.2   - Exercise 2.2"
+	print "3a    - Exercise 3a"
+	print "3b    - Exercise 3b"
+	print "3c    - Exercise 3c"
+	print "m     - Menu"
+	print "x     - Terminate"
+
+def Exercise1(sentence, action):
+	grammar = nltk.parse_cfg("""
+	S -> VP | NPS VP | VPS | NP VPS
+	NPS -> PPSS | Det NNS WPS VB PPO
+	NP -> PPS | Det NN | Det NNS | Det NN WPO PPS VBZ | Det NN WPS VBZ PPO
+	VP -> VB PPO | VB NP | NPS VB
+	VPS -> VBZ PPO | NP VBZ
+	Det -> "the"
+	NN -> "actor" | "actress"
+	NNS -> "actresses"
+	PPS -> "he" | "she"
+	PPO -> "her" | "him" | "me"
+	PPSS -> "I" | "they"
+	VBZ -> "likes" | "sings"
+	VB -> "like" | "know" | "sing"
+	WPS -> "who"
+	WPO -> "whom"
+	""")
+
+	sent = sentence.split()
+	rd_parser = nltk.RecursiveDescentParser(grammar)
+	if(action == "check"):
+	   try:
+			if(rd_parser.nbest_parse(sent) != []):
+				return "[ACCEPTED]"
+			elif(rd_parser.nbest_parse(sent) == []):
+				return "[NOT ACCEPTED]"
+	   except:
+			return "[NOT SUPPORTED]"
+	elif(action == "tree"):
+		try:
+			return rd_parser.nbest_parse(sent)
+		except:
+			return "NOT SUPPORTED"
+	else:
+		print "NO EXISTING ACTION SELECTED"
+
+def Tree(sentence):
+	for tree in Exercise1(sentence,"tree"):
+		return tree.draw()
+def Exercise1a():
+	print "|===============|"
+	print "| Exercise 1a   |"
+	print "|===============|\n"
+	print "If you want to see the tree's type the letternumbering"
+	print "of the sentence you want and hit enter\n"
+	print "   i. she likes him                    :",Exercise1("she likes him","check")
+	print "  ii. they like him                    :",Exercise1("they like him","check")
+	print " iii. they like the actress            :",Exercise1("they like the actress","check")
+	print "  iv. they like the actresses          :",Exercise1("they like the actresses","check")
+	print "   v. I know her                       :",Exercise1("I know her","check")
+	print "  vi. I know the actor whom she likes  :",Exercise1("I know the actor whom she likes","check")
+	print " vii. I know the actress who likes him :",Exercise1("I know the actress who likes him","check")
+	print "viii. the actress who likes him sings  :",Exercise1("the actress who likes him sings","check")
+	print "  ix. the actresses who like him sing  :",Exercise1("the actresses who like him sing","check")
+def Exercise1b():
+	print "|===============|"
+	print "| Exercise 1b   |"
+	print "|===============|\n"
+	print "   i. she likes he                      :",Exercise1("she likes he","check")
+	print "  ii. they likes him                    :",Exercise1("they likes him","check")
+	print " iii. me know her                       :",Exercise1("me know her","check")
+	print "  iv. I know the actress whom likes him :",Exercise1("I know the actress whom likes him","check")
+	print "   v. the actress who likes him sing    :",Exercise1("the actress who likes him sing","check")
+	print "  vi. the actress who like him sings    :",Exercise1("the actress who like him sings","check")
+	print " vii. the actresses who likes him sing  :",Exercise1("the actresses who likes him sing","check")
+	print "viii. the actresses who like him sings  :",Exercise1("the actresses who like him sings","check")
+def Exercise2_1():
+	#  |===============|
+	#  | Exercise 2.1  |
+	#  |===============|
+	#
+	#  2a - #3 (act or be so as to become in a specified state)
+	#  2b - #11 (have left or have as a remainder)
+	#  2c - #8 (remove oneself from an association with or participation in)
+	#  2d - #5 (move out of or depart from)
+	#  2e - #7 (have as a result or residue)
+	#  2f - #6 (make a possibility or provide opportunity for; permit to be attainable or cause to remain)
+	#  2g - #2 (go and leave behind, either intentionally or by neglect or forgetfulness)
+	#  2h - #10 (leave or give by will after one's death)
+	#  2i - #3 (act or be so as to become in a specified state)
+	#  2j - #3 (act or be so as to become in a specified state)
+
+	print "|===============|"
+	print "| Exercise 2.1  |"
+	print "|===============|\n"
+	print "2a - #3 (act or be so as to become in a specified state)"
+	print "2b - #11 (have left or have as a remainder)"
+	print "2c - #8 (remove oneself from an association with"
+	print "                                or participation in)\n"
+	print "2d - #5 (move out of or depart from)"
+	print "2e - #7 (have as a result or residue)"
+	print "2f - #6 (make a possibility or provide opportunity for;"
+	print "                permit to be attainable or cause to remain)\n"
+	print "2g - #2 (go and leave behind, either intentionally"
+	print "                      or by neglect or forgetfulness)\n"
+	print "2h - #10 (leave or give by will after one's death)"
+	print "2i - #3 (act or be so as to become in a specified state)"
+	print "2j - #3 (act or be so as to become in a specified state)"
+def Exercise2_2():
+	#  |===============|
+	#  | Exercise 2.2  |
+	#  |===============|
+	#
+	#  a) var litt vanskelig fordi jeg ikke er helt vant med annotering
+	#  d) var ogsaa litt vanskelig aa se med en gang pga. "applications to leave",
+	#  for da trodde jeg at det ikke gikk med #5, men saa forstod jeg det.
+	#  e) var vanskelig aa se fordi det var litt logisk at det kunne vaere #9
+	#  siden det ut ifra teksten kunne ha noe med "(put into the care or protection of someone)". 
+	#  Naar noen skal beskyttes er det jo normalt aa gjennomsoke huset forst
+	#  Denne maatte jeg faa hjelp til for aa skjonne
+	#
+	#
+	#  Jeg synes det var vanskeligst aa skille mellom 10 og 12.
+	#  For aa skille dem fra hverandre brukte jeg valget "Show Lexical File Info" i nedtrekk menyen
+	#  Da fikk jeg opp <verb.possession> paa #10 og <verb.change> #12, og da skjonte jeg hva forskjellen var.  
+
+	print "|===============|"
+	print "| Exercise 2.2  |"
+	print "|===============|\n"
+	print "a) var litt vanskelig fordi jeg ikke er helt vant med annotering"
+	print "d) var ogsaa litt vanskelig aa se med en gang pga. \"applications to leave\","
+	print "for da trodde jeg at det ikke gikk med #5, men saa forstod jeg det.\n"
+	print "e) var vanskelig aa se fordi det var litt logisk at det kunne vaere #9"
+	print "siden det ut ifra teksten kunne ha noe med \"(put into the care or protection of someone)\". Naar noen skal beskyttes er det jo normalt aa gjennomsoke huset forst"
+	print "Denne maatte jeg faa hjelp til for aa skjonne"
+	print "\n\nJeg synes det var vanskeligst aa skille mellom 10 og 12."
+	print "For aa skille dem fra hverandre brukte jeg valget \"Show Lexical File Info\""
+	print "i nedtrekk menyen. Da fikk jeg opp <verb.possession> paa #10 og"
+	print "<verb.change> #12, og da skjonte jeg hva forskjellen var."
+def Exercise3(ref):
+	training_document = file("wsd_tren.txt")
+	training_words = []
+	for words in training_document:
+		training_words.append(words.split())
+	category_removing = 0.0
+	category_self_motion = 0.0
+	category_reading = 0.0
+	removing = 0.0
+	self_motion = 0.0
+	reading = 0.0
+	day = 0.0
+	for sentence in training_words:
+		if(sentence[0] == "Reading"):
+			category_reading += 1
+			for word in sentence[1:]:
+				reading += 1
+		if(sentence[0] == "Removing"):
+			category_removing += 1
+			for word in sentence[1:]:
+				removing += 1
+		if(sentence[0] == "Self_motion"):
+			for word in sentence[1:]:
+				self_motion += 1
+	for sentence in training_words:
+		if(sentence[0] == "Reading"):
+			for word in sentence:
+				if(word == "day"):
+					day += 1
+	testing_document = open('wsd_test.txt', 'r').read()
+	testing_words = testing_document.split()[1:]
+
+	e1 = 0.0
+	e2 = 0.0
+	e3 = 0.0
+	e4 = 0.0
+	e5 = 0.0
+	e6 = 0.0
+	e7 = 0.0	
+	e8 = 0.0
+	e9 = 0.0
+
+	training_lines = open("wsd_tren.txt")
+
+	for line in training_lines:
+		word = line.split()
+		if(word[0] == "Reading"):
+			for w in word[1:]:
+				if(w == testing_words[0]):
+					e1 += 1
+				if(w == testing_words[1]):
+					e2 += 1
+				if(w == testing_words[2]):
+					e3 += 1
+		if(word[0] == "Removing"):
+			for w in word[1:]:
+				if(w == testing_words[0]):
+					e4 += 1
+				if(w == testing_words[1]):
+					e5 += 1
+				if(w == testing_words[2]):
+					e6 += 1
+		if(word[0] == "Self_motion"):
+			for w in word[1:]:
+				if(w == testing_words[0]):
+					e7 += 1
+				if(w == testing_words[1]):
+					e8 += 1
+				if(w == testing_words[2]):
+					e9 += 1
+	P1 = (reading/(reading + self_motion + removing)) * e1 * e2 * e3 / reading
+	P2 = (removing/(reading + self_motion + removing)) * e4 * e5 * e6 / removing
+	P3 = (self_motion/(reading + self_motion + removing)) * e7 * e8 * e9 / self_motion
+
+	if(ref == "3a"):
+		return (float(removing)/(reading + self_motion + removing))
+	elif(ref == "3b"):
+		return (float(day)/reading)
+	elif(ref == "3c"):
+		if(P1 > P2 and P1 > P3):
+			return "Den mest sannsynelige betydningen er Reading: "+str(P1)
+		elif(P2 > P1 and P2 > P3):
+			return "Den mest sannsynelige betydningen er Removing: "+str(P2)
+		elif(P3 > P1 and P3 > P2):
+			return "Den mest sannsynelige betydningen er Self_motion: "+str(P3)
+
+
+def Exercise3a():
+	print "|===============|"
+	print "| Exercise 3a   |"
+	print "|===============|\n"
+	print "Sannsynligheten for betydningen REMOVING er:",Exercise3("3a")
+
+def Exercise3b():
+	print "|===============|"
+	print "| Exercise 3b   |"
+	print "|===============|\n"
+	print "Sannsynligheten for day gitt READING er:",Exercise3("3b")
+def Exercise3c():
+	print "|===============|"
+	print "| Exercise 3c   |"
+	print "|===============|\n"
+	print Exercise3("3c")
+header()
+menu()
+while(True):
+	command = raw_input("\n> ")
+
+	if(command == '1a'):
+		Exercise1a()
+	elif(command == '1b'):
+		Exercise1b()
+	elif(command == '2.1'):
+		Exercise2_1()
+	elif(command == '2.2'):
+		Exercise2_2()
+	elif(command == '3a'):
+		Exercise3a()
+	elif(command == '3b'):
+		Exercise3b()
+	elif(command == '3c'):
+		Exercise3c()
+	elif(command == 'i'):
+		Tree("she likes him")
+	elif(command == 'ii'):
+		Tree("they like him")
+	elif(command == 'iii'):
+		Tree("they like the actress")
+	elif(command == 'iv'):
+		Tree("they like the actresses")
+	elif(command == 'v'):
+		Tree("I know her")
+	elif(command == 'vi'):
+		Tree("I know the actor whom she likes")
+	elif(command == 'vii'):
+		Tree("I know the actress who likes him")
+	elif(command == 'viii'):
+		Tree("the actress who likes him sings")
+	elif(command == 'ix'):
+		Tree("the actresses who like him sing")
+	elif(command == 'x'):
+		exit()
+	elif(command == 'm'):
+		header()
+		menu()
+	else:
+		print "-shell:",command+":","command not found"

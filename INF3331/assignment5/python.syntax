@@ -1,0 +1,10 @@
+"\w+\s*\=(?!\=)": variable
+"\bimport\b.*$|\bfrom\b.*\bimport\b.*$": import
+"(\bdef\b).*(?:$|\n)": function
+"None|True|False": nonetruefalse
+"\bif\b\s*.*:|\belse\b\s*.*:|\belif\b\s*.*:": ifelse
+"\bclass\b\s+.*": class
+"\btry\b\s*?:|\bexcept\b.*?:|\belse\b\s*?:|\braise\b\s*?|\bfinally\b\s*?:": tryexcept
+"\bfor\b\s+?\w+?\s+?\bin\b.*?:": forloop
+"\bwhile\b\s+?.*?:": whileloop
+"\bprint\b": print

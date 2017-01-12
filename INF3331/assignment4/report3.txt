@@ -1,0 +1,3 @@
+python implementation: 11.0s
+numpy  implementation: 8.2s
+cython implementation: 1.5s -- 7.3 times speedup compared to python and 5.4 speedup compared to numpy
